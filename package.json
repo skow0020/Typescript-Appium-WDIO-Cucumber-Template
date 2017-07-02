@@ -1,0 +1,76 @@
+{
+  "name": "sensonics-automation-framework",
+  "version": "0.0.0",
+  "description": "Typescript Appium WDIO Cucumber Automation Framework",
+  "main": "index.js",
+  "author": "Colin Skow",
+  "license": "ISC",
+  "dependencies": {
+    "appium": "1.6.5",
+    "appium-controller": "1.1.5",
+    "appium-windows-driver": "0.5.0",
+    "better-npm-run": "0.0.15",
+    "chai": "4.0.2",
+    "chromedriver": "2.29.2",
+    "core-js": "2.4.1",
+    "cucumber": "2.3.0",
+    "junit-viewer": "4.11.1",
+    "selenium-webdriver": "3.4.0",
+    "ts-node": "3.0.6",
+    "typescript": "2.3.4",
+    "webdriverio": "4.7.1",
+    "winappdriver-controller": "1.0.1"
+  },
+  "devDependencies": {
+    "@types/chai": "4.0.0",
+    "@types/core-js": "0.9.41",
+    "@types/cucumber": "2.0.1",
+    "@types/node": "7.0.29",
+    "@types/selenium-webdriver": "3.0.4",
+    "@types/webdriverio": "4.7.0",
+    "appium-doctor": "1.4.2",
+    "npm-run-all": "4.0.2",
+    "wdio-allure-reporter": "0.1.2",
+    "wdio-cucumber-framework": "0.3.1",
+    "wdio-cucumber-reporter": "0.0.2",
+    "wdio-json-reporter": "0.2.1",
+    "wdio-junit-reporter": "0.3.0",
+    "wdio-spec-reporter": "0.1.0",
+    "winappdriver-controller": "1.0.1"
+  },
+  "scripts": {
+    "appium": "appium",
+    "appium-kill": "kill $(ps aux | grep '[.]bin/appium' | awk '{print $2}')",
+    "cucumber": "cucumber-js src/features --compiler ts:ts-node/register --tags @loginPage",
+    "cucumber:report": "cucumber-js src/features --compiler ts:ts-node/register --format json > run_results/results.json",
+    "emulate": "ts-node scripts/emulate.ts",
+    "emulator-kill": "adb -s emulator-5554 emu kill",
+    "remove-js": "rm ./src/**/*.js && rm -r ./src/**/*.js.map",
+    "tslint": "tslint -c .tslint.json -t verbose './**/*.ts' -e './node_modules/**/*'",
+    "test:AndroidS7": "bnr test:AndroidS7 -s",
+    "test:iPhoneSim": "bnr test:iPhoneSim -s",
+    "test": "node ./node_modules/typescript/lib/tsc.js && node ./node_modules/webdriverio/bin/wdio && node ./node_modules/rimraf/bin.js srcjs"
+  },
+  "betterScripts": {
+    "test:AndroidS7": {
+      "command": "appium-controller --start && wdio --suite compatibleDeviceSuite && appium-controller --stop",
+      "env": {
+        "DEVICE_NAME": "AndroidS7",
+        "CAPABILITY": "Android"
+      }
+    },
+    "test:iPhone": {
+      "command": "appium-controller --start && wdio --spec ./src/features/example.feature && appium-controller --stop",
+      "env": {
+        "DEVICE_NAME": "iPhone6S",
+        "CAPABILITY": "iPhone"
+      }
+    },
+    "test:iPhoneSim": {
+      "command": "./node_modules/webdriverio/bin/wdio",
+      "env": {
+        "CAPABILITY": "iPhoneSim"
+      }
+    }
+  }
+}

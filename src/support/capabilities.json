@@ -1,0 +1,20 @@
+{
+    "Android": {
+        "automationName": "uiautomator2",
+        "app": "",
+        "deviceName": "s7Device",
+        "platformName": "Android",
+        "udid": ""
+    },
+    "iPhone": {
+        "automationName": "xcuitest",
+        "app": "",
+        "deviceName": "iPhone 6S-05",
+        "platformName": "iOS",
+        "udid": "",
+        "showXcodeLog": true,
+        "xcodeOrgId": "",
+        "xcodeSigningId": "iPhone Developer",
+        "updatedWDABundleId": "com.tapqa.WebDriverAgentRunner"        
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "noImplicitAny": false,
+        "experimentalDecorators": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": false,
+        "sourceMap": true,
+        "lib": [
+            "es6",
+            "dom",
+            "es2017",
+            "es2015.promise"
+        ]
+    },
+    "include": [
+        "./**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
